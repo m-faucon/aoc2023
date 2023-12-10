@@ -66,6 +66,7 @@
         0))
     0))
 
-(let [indexed-numbers (index-numbers (numbers-seq m))]
+(let [m (util/input-map)
+      indexed-numbers (index-numbers (numbers-seq m))]
   (transduce (map (partial gear-ratio m indexed-numbers))
              + (util/tiles m)))
