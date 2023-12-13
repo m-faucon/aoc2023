@@ -20,6 +20,11 @@
    (->> (slurp (str "resources/day" (day) "-" i))
         str/split-lines)))
 
+(defn input-paragraphs
+  ([] (input-paragraphs 1))
+  ([i]
+   (str/split (slurp-input i) #"\n\n")))
+
 (defn input-map
   ([] (input-map 1))
   ([i]
