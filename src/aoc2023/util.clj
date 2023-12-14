@@ -20,6 +20,13 @@
    (->> (slurp (str "resources/day" (day) "-" i))
         str/split-lines)))
 
+(defn input-cols
+  ([] (input-cols 1))
+  ([i]
+   (->> (input-lines i)
+        (apply mapv vector))))
+
+
 (defn input-paragraphs
   ([] (input-paragraphs 1))
   ([i]
