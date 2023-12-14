@@ -33,10 +33,10 @@
   [xs]
   (->> (map-indexed vector xs)
        (reduce (fn [acc [i x]]
-            (if-let [start (acc x)]
-              (reduced [start i])
-              (assoc acc x i)))
-          {})))
+                 (if-let [start (acc x)]
+                   (reduced [start i])
+                   (assoc acc x i)))
+               {})))
 
 (defn nth-of-eventually-periodic
   "nth for large n without realizing all the xs.
