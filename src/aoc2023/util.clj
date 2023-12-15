@@ -97,9 +97,3 @@
 (defn manhattan-distance
   [[a0 a1] [b0 b1]]
   (+ (Math/abs (- b1 a1)) (Math/abs (- b0 a0))))
-
-;; didn't use that in the end
-(defn all-matches
-  [re s]
-  (let [matcher (re-matcher re s)]
-    (take-while some? (repeatedly #(re-find matcher)))))
