@@ -17,7 +17,6 @@
   (let [[_ label [op] focal] (re-find #"([a-z]+)(-|=)(\d?)" segment)
         box-idx (aoc-hash label)
         focal (when focal (parse-long focal))]
-    (assert op segment)
     (case op
       \-
       (update boxes box-idx (partial into [] (remove (comp #{label} first))))
@@ -40,6 +39,7 @@
              (fn [j [_ focal]]
                (* (inc i) (inc j) focal))
              box)))
+
          cat)
    + boxes))
 
