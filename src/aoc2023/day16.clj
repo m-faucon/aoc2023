@@ -40,8 +40,7 @@
         (assoc state
                :beam new-beam
                :beam-heads (->> (mapcat advance-beam-head beam-heads)
-                                (remove beam))
-               :done? (= new-beam beam))))))
+                                (remove beam)))))))
 
 (defn count-energized
   [{:keys [beam]}]
@@ -58,7 +57,7 @@
     (fn [ibh]
       (->> (init ibh)
            (iterate step)
-           (drop-while (complement :done?))
+           (drop-while (comp seq :beam-heads))
            first
            count-energized))))
 
