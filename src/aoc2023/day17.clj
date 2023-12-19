@@ -1,7 +1,6 @@
 (ns aoc2023.day17
   (:require
     [aoc2023.util :as util]
-    [clojure.string :as str]
     [clojure.data.priority-map :as priority-map]))
 
 (def other-dir
