@@ -47,6 +47,10 @@
   [{:keys [L H]}]
   (for [x (range L) y (range H)] [x y]))
 
+(defn update-tiles-vals
+  [m f]
+  (reduce (fn [m tile] (update m tile f)) m (tiles m)))
+
 (defn tile-diff
   [[x0 y0] [x1 y1]]
   [(- x1 x0) (- y1 y0)])
@@ -97,3 +101,8 @@
 (defn manhattan-distance
   [[a0 a1] [b0 b1]]
   (+ (Math/abs (- b1 a1)) (Math/abs (- b0 a0))))
+
+(defn parse-digit
+  [c]
+  #_(int \0)
+  (- (int c) 48))
