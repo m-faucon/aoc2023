@@ -59,6 +59,10 @@
   [[x0 y0] [x1 y1]]
   [(+ x1 x0) (+ y1 y0)])
 
+(defn tile-scale
+  [a [x y]]
+  [(* a x) (* a y)])
+
 (def up [0 -1])
 (def down [0 1])
 (def right [1 0])
