@@ -110,3 +110,11 @@
   [c]
   #_(int \0)
   (- (int c) 48))
+
+(defn interval-intersection
+  [[a b] [c d]]
+  [(max a c) (min b d)])
+
+(defn empty-interval?
+  [[m M]]
+  (< M m))

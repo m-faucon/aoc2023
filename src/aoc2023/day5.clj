@@ -87,8 +87,8 @@
 (defn process-interval
   [map- interval]
   (keep (fn [{:keys [src end dst]}]
-          (let [inter (interval-intersection interval [src end])]
-            (when-not (empty-interval? inter)
+          (let [inter (util/interval-intersection interval [src end])]
+            (when-not (util/empty-interval? inter)
               (if (= :unmapped dst)
                 inter
                 (let [translation (- dst src)]
