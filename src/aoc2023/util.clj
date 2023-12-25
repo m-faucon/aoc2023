@@ -12,13 +12,13 @@
 
 (defn slurp-input
   ([] (slurp-input 1))
+  ; the trim is because when I copy paste into emacs and save it adds a newline at the end
   ([i] (str/trimr (slurp (str "resources/day" (day) "-" i)))))
 
 (defn input-lines
   ([] (input-lines 1))
   ([i]
-   (->> (slurp (str "resources/day" (day) "-" i))
-        str/split-lines)))
+   (str/split-lines (slurp-input i))))
 
 (defn input-cols
   ([] (input-cols 1))
@@ -32,16 +32,21 @@
   ([i]
    (str/split (slurp-input i) #"\n\n")))
 
+(defn lines->2d-map
+  [lines]
+  (let [lines (vec lines)
+        H (count lines)
+        L (count (lines 0))]
+    (into {:H H :L L}
+          (for [x (range L)
+                y (range H)]
+            [[x y] (.charAt (lines y) x)]))))
+
 (defn input-map
   ([] (input-map 1))
   ([i]
-   (let [lines (vec (input-lines i))
-         H (count lines)
-         L (count (lines 0))]
-     (into {:H H :L L}
-           (for [x (range L)
-                 y (range H)]
-             [[x y] (.charAt (lines y) x)])))))
+   (lines->2d-map (input-lines i))))
+
 
 (defn tiles
   [{:keys [L H]}]
